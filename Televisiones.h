@@ -1,11 +1,16 @@
 /*
- * Proyecto Gestión de Vendedores y Ventas
+ *
+ * Proyecto "Gestión de Vendedores y Ventas" calse Empresa
+ * 
  * Diego Gerardo Sanchez Moreno
+ * 
  * A01276011
  * 
- */
-
-/*
+ * 19/09/2023
+ * 
+ * 
+ * 
+ * 
  * Clase Televisiones que hereda de la clase Empleados
  */
 
@@ -22,7 +27,6 @@ using namespace std;
 class Televisiones: public Empleados{
     // declaro atributos privados de instancia
     private:
-        int num_ventas;
     // declaracion de los contructores y los metodos
     public:
         //constructor default
@@ -30,8 +34,8 @@ class Televisiones: public Empleados{
         //cosntructor
         Televisiones (string, string, int);
         //metodos
-        int get_num_ventas ();
         string to_string ();
+        int get_num_ventas();
 
 };
 
@@ -46,10 +50,7 @@ Televisiones::Televisiones (string nom, string loc, int vent):Empleados(nom,loc)
     num_ventas = vent;
 }
 
-//get ventas
-int Televisiones::get_num_ventas(){
-    return num_ventas;
-}
+
 
 /**
  * Almacena los valores de las variables de instancia en una cadena de
@@ -65,4 +66,8 @@ string Televisiones::to_string(){
     return aux.str();
 }
 
+//get ventas
+int Televisiones::get_num_ventas(){
+    return num_ventas;
+}
 #endif // Radios.h

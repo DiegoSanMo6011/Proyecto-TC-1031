@@ -1,11 +1,16 @@
 /*
- * Proyecto Gestión de Vendedores y Ventas
+ *
+ * Proyecto "Gestión de Vendedores y Ventas" calse Empresa
+ * 
  * Diego Gerardo Sanchez Moreno
+ * 
  * A01276011
  * 
- */
-
-/*
+ * 19/09/2023
+ * 
+ * 
+ * 
+ * 
  * Clase Empleados que tiene como atributo el nombre de los
  * empleados, tiene dos clases hijas:
  * "Televisiones" y "Radios"
@@ -26,6 +31,7 @@ class Empleados{
     protected:
         string nombre;
         string local;
+        int num_ventas;
     //declaracion de los contructores y los metodos 
     public:
         //constructor default
@@ -34,7 +40,8 @@ class Empleados{
         Empleados(string nom, string loc);
         //metodos
         virtual string to_string() = 0;
-        virtual int get_num_ventas() = 0;
+        string get_local();
+        virtual int get_num_ventas()  = 0;
 };
 
 //cosntructor default
@@ -47,6 +54,12 @@ Empleados::Empleados () {
 Empleados::Empleados (string nom, string loc){
     nombre = nom;
     local = loc;
+}
+
+
+// getter de local
+string Empleados::get_local(){
+    return local;
 }
 
 

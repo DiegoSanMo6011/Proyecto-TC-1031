@@ -8,7 +8,6 @@
  * 
  * 19/09/2023
  * 
- * version : 1
  * 
  * Esta clase define objeto de tipo Empresa que contiene todas las operaciones para 
  * agregar nuevos empleados de cada local y permite mostrar los mejores
@@ -37,14 +36,17 @@ class Empresa{
     //Declaro las variables de isntancia
     private:
         Empleados * empl[MAX]; // se define como apuntador para utilizar polimorfismo
-        int cont;
+        int cont = 0;
+        
+
+
     //Declaro constructor default y metodos publicos
     public:
         Empresa(): cont(0){}; //cosntructor default
 
         void crea_ejemplos();
-        void muestra_mas_ventas();
-        void muestra_mas_ventas(string local);
+        void muestra_vendedores();
+        void bubble_sort();
         void agrega_radios(string nombre, string local, int num_ventas);
         void agrega_teles(string nombre, string local, int num_ventas);
 };
@@ -62,26 +64,17 @@ class Empresa{
  */
 void Empresa::crea_ejemplos(){
     //la funcion new crea el objeto en tiempo de ejecucion para usar polimorfismo
-    empl[cont] = new Radios("Juan Carlos Perez", "Radios", 76);
+    empl[cont] = new Radios("Juan Carlos Perez", "Tienda de Radios", 76);
     cont++;
-    empl[cont] = new Radios("Fulanito Gutierrez", "Radios", 12);
+    empl[cont] = new Radios("Fulanito Gutierrez", "Tienda de Radios", 12);
     cont++;
-    empl[cont] = new Televisiones("Leo Messi", "Televisiones", 12345);
+    empl[cont] = new Televisiones("Leo Messi", "Tienda de Televisiones", 56);
     cont++;
-    empl[cont] = new Televisiones("Cristiano Ronaldo", "Televisiones", 12344);
+    empl[cont] = new Televisiones("Cristiano Ronaldo", "Tienda de Televisiones", 89);
     cont++;
     
 }
 
-
-//merge sort
-void Empresa::muestra_mas_ventas(){
-
-}
-
-void Empresa::muestra_mas_ventas(string local){
-    
-}
 
 /**
  * agrega_radios crea un objeto Radios y lo agrega a
@@ -106,11 +99,50 @@ void Empresa::agrega_radios(string nombre, string local, int num_ventas) {
  * @param string nom, string loc, int num_ventas
  * @return
  */
+ 
 void Empresa::agrega_teles(string nombre, string local, int num_ventas) {
 
   //new crea el objeto en tiempo de ejecución para usar polimorfismo
   empl[cont] = new Televisiones(nombre, local, num_ventas);
   cont++;
 }
+
+
+/* ================== Bubble Sort ================================*/
+/**
+ * Ordena el arreglo de apuntadores
+ *
+ * @param
+ * @return
+ */
+void Empresa::bubble_sort(){
+  bool swapped;
+    // ciclo que accede a cada elemento del arreglo
+    for (int i = 0; i < cont - 1; i++) {
+        swapped = false;
+        //ciclo para comparar cada elemento del arreglo
+        for (int j=0; j < cont - i -1; j++){
+            //comparar
+            if (empl[j] -> get_num_ventas() < empl[j + 1] -> get_num_ventas()){
+                swap(empl[j], empl[j+1]);
+                swapped = true;
+            }
+        }  
+        if (swapped == false)
+            break;  
+    }
+}
+
+
+//muestra
+void Empresa::muestra_vendedores(){
+  
+  for (int i = 0; i < cont; i++){
+    cout << empl[i] -> to_string();
+  }
+}
+
+
+
 
 #endif //Empresa.h
