@@ -40,8 +40,19 @@ class Empleados{
         Empleados(string nom, string loc);
         //metodos
         virtual string to_string() = 0;
-        string get_local();
-        virtual int get_num_ventas()  = 0;
+        virtual int get_num_ventas() const = 0;
+        //sobrecarga de operadores
+        bool operator<(const Empleados& other) const {
+            return this->get_num_ventas() < other.get_num_ventas();
+        }
+
+        bool operator>(const Empleados& other) const {
+            return this->get_num_ventas() > other.get_num_ventas();
+        }
+
+        bool operator==(const Empleados& other) const {
+            return this->get_num_ventas() == other.get_num_ventas();
+        }
 };
 
 //cosntructor default
@@ -56,11 +67,6 @@ Empleados::Empleados (string nom, string loc){
     local = loc;
 }
 
-
-// getter de local
-string Empleados::get_local(){
-    return local;
-}
 
 
 #endif //Empleados.h

@@ -34,8 +34,8 @@ class Televisiones: public Empleados{
         //cosntructor
         Televisiones (string, string, int);
         //metodos
-        string to_string ();
-        int get_num_ventas();
+        string to_string () override;
+        int get_num_ventas() const override;
 
 };
 
@@ -67,7 +67,7 @@ string Televisiones::to_string(){
 }
 
 //get ventas
-int Televisiones::get_num_ventas(){
+int Televisiones::get_num_ventas() const{
     return num_ventas;
 }
-#endif // Radios.h
+#endif // Televisiones.h

@@ -13,14 +13,16 @@
  */
 
  //librerias 
- #include <iostream>
+#include <iostream>
 #include <string>
 #include <limits> // Para limpiar el búfer de entrada
+#include <iomanip>
 
 #include "Empresa.h"
 #include "Empleados.h"
 #include "Televisiones.h"
 #include "Radios.h"
+#include "bst.h"
 
 using namespace std;
 
@@ -40,7 +42,7 @@ void limpiarBuffer() {
 
 // Función para mostrar un mensaje de confirmación
 void mostrarConfirmacion() {
-    cout << "Acción completada con exito" << endl;
+    cout << "Accion completada con exito" << endl;
 }
 
 int main() {
@@ -56,19 +58,22 @@ int main() {
         system("cls");
 
         // Imprime el título y línea decorativa
-        cout << "\033[32m*********** Gestion de ventas por empleado ***********\033[0m" << endl;
+        cout << "\033[32m";
+        cout << setw(50) << "*********** Gestion de ventas por empleado ***********" << std::endl;
+        cout << "\033[0m";
         imprimirLineaDecorativa(50);
 
         // Imprime las opciones
-        cout << "1. Crear ejemplos y mostrar vendedores (prueba)" << endl;
-        cout << "2. Mostrar vendedores" << endl;
-        cout << "3. Mostrar vendedores con mas ventas" << endl;
-        cout << "4. Agregar un vendedor de radios" << endl;
-        cout << "5. Agregar un vendedor de televisiones" << endl;
-        cout << "0. Salir" << endl;
-        imprimirLineaDecorativa(50);
+        // Imprime las opciones de manera más estilizada
+        cout << "Opciones:" << std::endl;
+        cout << "\033[1;36m1. Crear ejemplos y mostrar vendedores (prueba)\033[0m" << endl;
+        cout << "\033[1;36m2. Mostrar vendedores\033[0m" << endl;
+        cout << "\033[1;36m3. Agregar un vendedor de radios\033[0m" << endl;
+        cout << "\033[1;36m4. Agregar un vendedor de televisiones\033[0m" << endl;
+        cout << "\033[1;31m0. Salir\033[0m" << endl;
+            imprimirLineaDecorativa(50);
 
-        cout << "Seleccione una opcion: ";
+        cout << "Seleccione una opcion: " << endl;
         cin >> opcion;
 
         switch (opcion) {
@@ -79,11 +84,8 @@ int main() {
             case 2:
                 empresa.muestra_vendedores();
                 break;
+
             case 3:
-                empresa.bubble_sort();
-                empresa.muestra_vendedores();
-                break;
-            case 4:
                 cout << "Escribe el nombre del empleado: ";
                 limpiarBuffer();
                 cin.getline(temp_nombre, sizeof(temp_nombre));
@@ -94,7 +96,7 @@ int main() {
                 empresa.agrega_radios(temp_nombre, temp_local, temp_ventas);
                 mostrarConfirmacion();
                 break;
-            case 5:
+            case 4:
                 cout << "Escribe el nombre del empleado: ";
                 limpiarBuffer();
                 cin.getline(temp_nombre, sizeof(temp_nombre));
@@ -109,7 +111,7 @@ int main() {
                 cout << "Saliendo del programa. Hasta luego :D" << endl;
                 return 0;
             default:
-                cout << "Opción no valida. Por favor, elija una opción valida." << endl;
+                cout << "Opcion no valida. Por favor, elija una opcion valida." << endl;
                 break;
         }
 

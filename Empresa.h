@@ -11,7 +11,7 @@
  * 
  * Esta clase define objeto de tipo Empresa que contiene todas las operaciones para 
  * agregar nuevos empleados de cada local y permite mostrar los mejores
- * vendedores, tato generales como de cada local
+ * vendedores.
  * 
  */
 
@@ -21,11 +21,13 @@
 #include <string>
 #include <iostream>
 #include <sstream>
+#include <iomanip>
 
 //bibliotecas con los objetos a usar
 #include "Empleados.h"
 #include "Televisiones.h"
 #include "Radios.h"
+#include "bst.h" 
 
 using namespace std;
 
@@ -35,111 +37,82 @@ const int MAX = 100; // valor constante para el tamano de los arreglos
 class Empresa{
     //Declaro las variables de isntancia
     private:
-        Empleados * empl[MAX]; // se define como apuntador para utilizar polimorfismo
-        int cont = 0;
+        BST<Empleados*> empleadosTree; // Usamos un puntero a Empleados para permitir objetos de clases derivadas
+        int cont;
         
-
-
     //Declaro constructor default y metodos publicos
     public:
         Empresa(): cont(0){}; //cosntructor default
 
         void crea_ejemplos();
         void muestra_vendedores();
-        void bubble_sort();
         void agrega_radios(string nombre, string local, int num_ventas);
         void agrega_teles(string nombre, string local, int num_ventas);
 };
 
 /**
- * crea_ejemplos genera objetos en empl[]
+ * crea_ejemplos: Genera objetos en empleadosTree
  *
- * genera objetos de tipo Radios y Televisiones los
- * guarda en la varibale de instancia en empl[] (arreglo de empleados)
+ * Genera objetos de tipo Radios y Televisiones y los
+ * guarda en la variable de instancia empleadosTree (árbol de empleados)
  * para poder hacer pruebas. No usar esta función si se va a usar el programa
- * como agenda, ya que los datos son falsos.
+ * como una agenda, ya que los datos son falsos.
  *
  * @param
  * @return
  */
 void Empresa::crea_ejemplos(){
-    //la funcion new crea el objeto en tiempo de ejecucion para usar polimorfismo
-    empl[cont] = new Radios("Juan Carlos Perez", "Tienda de Radios", 76);
-    cont++;
-    empl[cont] = new Radios("Fulanito Gutierrez", "Tienda de Radios", 12);
-    cont++;
-    empl[cont] = new Televisiones("Leo Messi", "Tienda de Televisiones", 56);
-    cont++;
-    empl[cont] = new Televisiones("Cristiano Ronaldo", "Tienda de Televisiones", 89);
-    cont++;
+    empleadosTree.add(new Radios("Juan Carlos Perez", "Tienda de Radios", 9));
+    empleadosTree.add(new Radios("Fulanito Gutierrez", "Tienda de Radios",8));
+    empleadosTree.add(new Televisiones("Leo Messi", "Tienda de Televisiones", 7));
+    empleadosTree.add(new Televisiones("Cristiano Ronaldo", "Tienda de Televisiones", 10));
     
 }
 
 
 /**
- * agrega_radios crea un objeto Radios y lo agrega a
- * arreglo de empleados usando como
- * index un contador que incrementa en 1.
+ * agrega_radios: Crea un objeto Radios y lo agrega al árbol de empleados.
  *
- * @param string nom, string loc, int num_ventas
+ * @param nombre: Nombre del empleado
+ * @param local: Local del empleado
+ * @param num_ventas: Número de ventas realizadas por el empleado
  * @return
  */
 void Empresa::agrega_radios(string nombre, string local, int num_ventas) {
-
   //new crea el objeto en tiempo de ejecución para usar polimorfismo
-  empl[cont] = new Radios(nombre, local, num_ventas);
-  cont++;
+  empleadosTree.add(new Radios(nombre, local, num_ventas));
+
 }
 
 /**
- * agrega_teles crea un objeto Televisiones y lo agrega a
- * arreglo de empleados usando como
- * index un contador que incrementa en 1.
+ * agrega_teles: Crea un objeto Televisiones y lo agrega al árbol de empleados.
  *
- * @param string nom, string loc, int num_ventas
+ * @param nombre: Nombre del empleado
+ * @param local: Local del empleado
+ * @param num_ventas: Número de ventas realizadas por el empleado
  * @return
  */
- 
 void Empresa::agrega_teles(string nombre, string local, int num_ventas) {
 
   //new crea el objeto en tiempo de ejecución para usar polimorfismo
-  empl[cont] = new Televisiones(nombre, local, num_ventas);
-  cont++;
+  empleadosTree.add(new Televisiones(nombre, local, num_ventas));
 }
 
 
-/* ================== Bubble Sort ================================*/
-/**
- * Ordena el arreglo de apuntadores
- *
- * @param
- * @return
- */
-void Empresa::bubble_sort(){
-  bool swapped;
-    // ciclo que accede a cada elemento del arreglo
-    for (int i = 0; i < cont - 1; i++) {
-        swapped = false;
-        //ciclo para comparar cada elemento del arreglo
-        for (int j=0; j < cont - i -1; j++){
-            //comparar
-            if (empl[j] -> get_num_ventas() < empl[j + 1] -> get_num_ventas()){
-                swap(empl[j], empl[j+1]);
-                swapped = true;
-            }
-        }  
-        if (swapped == false)
-            break;  
-    }
-}
 
-
-//muestra
+// Muestra a los vendedores en orden
 void Empresa::muestra_vendedores(){
-  
-  for (int i = 0; i < cont; i++){
-    cout << empl[i] -> to_string();
-  }
+  if (empleadosTree.empty()) {
+        cout << "No hay empleados registrados." << endl;
+        return;
+    }
+  // Crea un stringstream para acumular los datos de los empleados
+  stringstream empleadosEnOrden;
+  empleadosTree.inorder(empleadosEnOrden);
+  cout << "\033[32m";
+  cout << setw(50) << "*********** Empleados en orden ***********" << std::endl;
+  cout << "\033[0m";
+  cout << empleadosEnOrden.str() <<endl;
 }
 
 

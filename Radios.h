@@ -33,8 +33,8 @@ class Radios: public Empleados{
         //cosntructor
         Radios (string, string, int);
         //metodos
-        string to_string ();
-        int get_num_ventas();
+        string to_string() override;
+        int get_num_ventas() const override;
 
 };
 
@@ -65,7 +65,7 @@ string Radios::to_string(){
 }
 
 //get ventas
-int Radios::get_num_ventas(){
+int Radios::get_num_ventas() const{
     return num_ventas;
 }
-#endif // Sucursal_sur.h
+#endif // Radios.h
