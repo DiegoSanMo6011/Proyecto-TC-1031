@@ -1,67 +1,63 @@
-# Proyecto de Gestión de Vendedores y Ventas
+# Proyecto: Gestión de Vendedores y Ventas
+Este proyecto tiene como objetivo desarrollar un programa para gestionar vendedores y sus datos de ventas. Los usuarios pueden agregar nuevos vendedores, registrar información sobre sus ventas y realizar búsquedas en una estructura de árbol de búsqueda binaria.
 
-## Descripción del Proyecto
+## Descripción del avance 1
+En este primer avance del proyecto, se han codificado todas las clases planificadas (Radios, Televisiones, Empleados y Empresa). Además, se ha desarrollado un programa principal (main.cpp) que funciona como un menú interactivo para que los usuarios interactúen con el sistema. El programa se ha subido a un repositorio de GitHub para facilitar el control de versiones y a su vez en Replit para su evaluación
 
-Este proyecto de "Gestión de Vendedores y Ventas" se enfoca en el desarrollo de un programa que permite gestionar vendedores y sus datos de ventas. Los usuarios pueden agregar nuevos vendedores y registrar información sobre sus ventas. Además, el programa ofrece la funcionalidad de ordenar y mostrar a los vendedores en función del número de ventas, de mayor a menor.
+## Descripción del avance 2
+En este segundo avance, se ha incorporado un árbol de búsqueda binaria para gestionar y ordenar a los vendedores según el número de ventas. La razón detrás de esta mejora es aumentar la eficiencia del programa en la gestión de grandes conjuntos de datos. El árbol se recorre en orden (inorder), y se imprime el método to_string de los objetos contenidos en el árbol. Esto permite una representación ordenada y eficiente de los vendedores en función de sus ventas. 
+
+### Cambios sobre el primer avance
+1. Implementación de Árbol de Búsqueda Binaria: En lugar de utilizar Bubble Sort, se ha implementado una estructura de árbol de búsqueda binaria para ordenar y almacenar a los vendedores en función del número de ventas. La razón de esta elección es mejorar la eficiencia del programa para grandes conjuntos de datos, ya que el ordenamiento y búsqueda en un árbol de búsqueda binaria es más eficiente que Bubble Sort para este propósito.
+2. Cambios Estéticos en el Menú
+Se han realizado ajustes estéticos en el menú interactivo, mejorando la presentación de las opciones disponibles y la información mostrada al usuario. Estos cambios buscan hacer que el programa sea más agradable y fácil de usar.
 
 
-## Descripcion de Avance
-En este avance se codificaron todas las clases planeadas (Radios, Televisiones, Empleados y Empresa) tambien se ralizo un main y se hizo el repositorio de github.
-La funcionalidad meta que era ordenar los vendedores por numero de ventas fue lograda, en las siguientes entregas se piensa agragar nuevos metodos para que el tener distintos tipos de clases hijas de empleados tenga una funcionalidad, es decir agregar nuevos metodos y atributos a estas clases. Tambien se planea agregar un metodo a la clase Empresa que permita buscar los empleados de una tienda especifica.
+## Instrucciones para compilar el avance de proyecto
+Ejecuta el siguiente comando en la terminal:
 
-## Cómo Usar el Programa
+`g++ main.cpp Empleados.h Empresa.h Radios.h Televisiones.h bst.h` 
 
-El programa se ejecuta a través del archivo `main.cpp`, que funciona como un menú interactivo. Los usuarios pueden realizar las siguientes acciones:
+## Instrucciones para ejecutar el avance de proyecto
+Ejecuta el siguiente comando en la terminal:
 
-1. **Crear ejemplos y mostrar vendedores (prueba)**: Genera ejemplos de vendedores y muestra la lista de vendedores.
+`./a.out` 
 
-2. **Mostrar vendedores**: Muestra la lista de vendedores actual.
+## Descripción de las entradas del avance de proyecto
+El proyecto en su estado actual no requiere archivos de entrada externos. Las entradas se realizan a través del menú interactivo proporcionado por el programa main.cpp. Los usuarios pueden agregar vendedores, registrar ventas y buscar vendedores sin necesidad de archivos de entrada externos.
 
-3. **Mostrar vendedores con más ventas**: Ordena y muestra a los vendedores de mayor a menor número de ventas.
+## Descripción de las salidas del avance de proyecto
+Visualización del Menú: El programa muestra un menú interactivo que presenta las diferentes opciones disponibles para el usuario. Cada opción está numerada y se presenta de manera clara, facilitando la selección de acciones.
 
-4. **Agregar un vendedor de radios**: Permite agregar un vendedor de radios con su nombre, local y número de ventas.
+Visualización de Ejemplos y Vendedores: Cuando se selecciona la opción "Crear ejemplos y mostrar vendedores (prueba)", el programa muestra ejemplos de vendedores en un formato organizado. Cada vendedor se presenta con su nombre, local y número de ventas.
 
-5. **Agregar un vendedor de televisiones**: Permite agregar un vendedor de televisiones con su nombre, local y número de ventas.
+Visualización de la Lista de Vendedores: Al seleccionar la opción "Mostrar vendedores", el programa muestra una lista de vendedores en orden. Cada vendedor se presenta con su nombre, local y número de ventas.
 
-0. **Salir**: Sale del programa.
+Agregar Vendedor de Radios o Televisores: Cuando el usuario elige agregar un vendedor de radios o televisores, el programa solicita el nombre del empleado y el número de ventas que ha realizado. Después de completar la acción, el programa muestra un mensaje indicando que la acción se ha completado con éxito.
 
-## Cumplimiento de las Sub-Competencias
+Mensaje de Salida: Al seleccionar la opción "Salir", el programa muestra un mensaje de despedida y se cierra.
+
+Estas salidas proporcionan al usuario información clara y organizada sobre los vendedores y las acciones realizadas en el programa. Además, se destacan las acciones exitosas, como agregar un nuevo vendedor.
+
+## Desarrollo de competencias
 
 ### SICT0301: Evalúa los componentes
+#### Hace un análisis de complejidad correcto y completo para los algoritmos de ordenamiento usados en el programa.
+En este segundo avance, se ha implementado un árbol de búsqueda binaria para ordenar y almacenar a los vendedores. La elección de esta estructura se basó en un análisis de complejidad que demuestra su eficiencia en el ordenamiento y búsqueda de datos. El árbol de búsqueda binaria mejora significativamente el rendimiento del programa para grandes conjuntos de datos en comparación con Bubble Sort.
 
-El uso de Bubble Sort en este proyecto se fundamenta en una evaluación exhaustiva de sus componentes y su adecuación al contexto específico del programa. A continuación, se detallan los aspectos clave de esta evaluación:
-
-   * Análisis de Complejidad: Dado que el tamaño del arreglo de empleados es limitado, se ha realizado un análisis de complejidad que demuestra que el rendimiento de Bubble Sort es satisfactorio para esta aplicación. Aunque Bubble Sort tiene una complejidad de tiempo de O(n^2) en el peor caso, su rendimiento es aceptable para conjuntos de datos pequeños, como el utilizado en este proyecto.
-   
-   * Memoria y Recursos: En proyectos con recursos limitados, como sistemas embebidos o aplicaciones de hardware restringidas, el uso de algoritmos más simples como Bubble Sort puede ser una elección adecuada para minimizar la carga de memoria y recursos. En este caso, dado que el arreglo es pequeño y la complejidad espacial de Bubble Sort es O(1), se evita un consumo innecesario de recursos.
-   
-   * Mantenimiento y Claridad del Código: La claridad del código es esencial para facilitar el mantenimiento y la comprensión del proyecto. Bubble Sort es un algoritmo simple de implementar y depurar, lo que lo hace más accesible para futuras modificaciones o colaboraciones en el código.
-   
-   * Compatibilidad con Objetos Polimórficos: El programa maneja objetos de diferentes tipos (Radios y Televisiones) en un arreglo de apuntadores a la clase base "Empleados". Bubble Sort se adapta naturalmente a esta situación, ya que se basa en comparaciones de elementos sin preocuparse por su tipo específico.
-
-En resumen, la elección de Bubble Sort se apoya en una evaluación completa de sus componentes, teniendo en cuenta aspectos de rendimiento, uso eficiente de recursos, facilidad de mantenimiento y compatibilidad con la estructura de datos del proyecto. Esto garantiza que el algoritmo sea adecuado y eficiente en el contexto específico de esta aplicación de gestión de vendedores y ventas.
+#### Hace un análisis de complejidad correcto y completo de todas las estructuras de datos y cada uno de sus usos en el programa.
+El análisis de complejidad se ha centrado en la implementación del árbol de búsqueda binaria, que es fundamental para el ordenamiento y búsqueda de vendedores. Dado que las demás estructuras de datos utilizadas son relativamente simples, no se han identificado problemas de rendimiento significativos.
 
 ### SICT0302: Toma decisiones
+#### Selecciona un algoritmo de ordenamiento adecuado al problema y lo usa correctamente.
+En lugar de utilizar Bubble Sort, se ha optado por la implementación de un árbol de búsqueda binaria para ordenar a los vendedores en función del número de ventas. Esta elección se basa en la eficiencia del árbol de búsqueda binaria en comparación con Bubble Sort, especialmente en conjuntos de datos más grandes. El uso de un árbol de búsqueda binaria demuestra la capacidad de seleccionar una estructura de datos adecuada para el problema.
 
-Se optó por utilizar el algoritmo de ordenamiento "Bubble Sort" en lugar de otros algoritmos más eficientes (como Merge Sort o Quick Sort) debido a varias consideraciones específicas para este proyecto:
+#### Selecciona una estructura de datos adecuada al problema y la usa correctamente.
+En este proyecto, se ha seleccionado y utilizado correctamente una estructura de árbol de búsqueda binaria para ordenar y almacenar a los vendedores en función del número de ventas. Esta elección mejora significativamente la eficiencia del programa y demuestra la capacidad de seleccionar una estructura de datos adecuada para el problema.
 
-   * Tamaño del Arreglo: El arreglo de empleados en este proyecto es relativamente pequeño, lo que significa que no se requiere una gran cantidad de memoria ni una alta velocidad de ordenamiento. En situaciones con arreglos pequeños, la diferencia en la eficiencia entre Bubble Sort y otros algoritmos más avanzados es insignificante.
-   
-   * Sencillez de Implementación: Bubble Sort es un algoritmo de ordenamiento simple y fácil de entender. Utiliza una única función para su funcionamiento, lo que facilita la implementación y el mantenimiento del código. En proyectos pequeños o con fines educativos, la simplicidad de la implementación puede ser una ventaja importante.
-   
-   * Ordenamiento de Objetos Polimórficos: En este proyecto, se está ordenando un arreglo de apuntadores a objetos de la clase "Empleados". Estos objetos pueden ser de dos tipos diferentes: "Radios" y "Televisiones". Al usar Bubble Sort, es más sencillo ordenar el arreglo sin preocuparse por el tipo de objeto, lo que evita problemas potenciales al tratar de ordenar objetos heterogéneos.
-   
-   * Facilita la Interacción del Usuario: Dado que el programa permite al usuario agregar vendedores de diferentes tipos (Radios o Televisiones), utilizar un algoritmo más complejo podría introducir limitaciones en la funcionalidad. Bubble Sort permite mantener la simplicidad de la interacción del usuario al ordenar el arreglo de empleados sin restricciones.
+### SICT0303: Implementa acciones científicas
+#### Implementa mecanismos para consultar información de las estructras correctos.
+En este avance, el programa permite a los usuarios buscar vendedores en función del número de ventas utilizando el árbol de búsqueda binaria. Estos mecanismos de consulta se han implementado correctamente y proporcionan resultados precisos y eficientes.
 
-En resumen, la elección de Bubble Sort se basa en la eficiencia adecuada para el tamaño del arreglo, la facilidad de implementación, la capacidad de manejar objetos polimórficos y la compatibilidad con la funcionalidad del programa que permite la inclusión de vendedores de diferentes tipos. Estas consideraciones hacen que Bubble Sort sea una elección apropiada y justificable para este proyecto.
-
-## Instrucciones de Ejecución
-
-1. Abre una terminal o línea de comandos.
-
-2. Navega al directorio donde se encuentra el archivo `main.cpp`.
-
-3. Compila el programa utilizando un compilador C++ compatible (por ejemplo, g++):
-
-   ```bash
-   g++ main.cpp Empleados.h Empresa.h Radios.h Televisiones.h
+#### Implementa mecanismos de lectura de archivos para cargar datos a las estructuras de manera correcta.
+La forma de cargar los datos a la estructura es por medio del menú interactivo del codigo.
