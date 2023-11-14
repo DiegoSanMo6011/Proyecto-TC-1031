@@ -1,6 +1,6 @@
 /*
  *
- * Proyecto "Gestión de Vendedores y Ventas" calse Empresa
+ * Proyecto "Gestión de Vendedores y Ventas" calse 
  * 
  * Diego Gerardo Sanchez Moreno
  * 
@@ -51,7 +51,6 @@ Televisiones::Televisiones (string nom, string loc, int vent):Empleados(nom,loc)
 }
 
 
-
 /**
  * Almacena los valores de las variables de instancia en una cadena de
  * texto.
@@ -59,12 +58,12 @@ Televisiones::Televisiones (string nom, string loc, int vent):Empleados(nom,loc)
  * @param
  * @return string con los datos de Empleados del local televisiones
 */
-string Televisiones::to_string(){
-
-    stringstream aux;
-    aux << "\nNombre: " << nombre << "\nLocal: " << local << "\nVentas: " << num_ventas << "\n" ;
-    return aux.str();
+string Televisiones::to_string() {
+    stringstream ss;
+    ss << nombre << ',' << local << ',' << num_ventas << endl;
+    return ss.str();
 }
+
 
 //get ventas
 int Televisiones::get_num_ventas() const{

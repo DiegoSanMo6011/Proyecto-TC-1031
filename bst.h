@@ -14,6 +14,7 @@
 #include <iostream>
 #include <sstream>
 #include <string>
+#include <vector>
 
 using namespace std; // Agregamos esta línea para usar std::cout
 
@@ -242,6 +243,7 @@ template <class T>
 class BST {
 private:
     TreeNode<T> *root;
+    void inorderToList(vector<T>& result, TreeNode<T>* current) const;
 
 public:
     BST();
@@ -252,6 +254,7 @@ public:
     void remove(T);
     void removeAll();
     void inorder(std::stringstream &) const;
+    void inorderToList(vector<T>& result) const;
 };
 
 /**
@@ -357,6 +360,23 @@ template <class T> void BST<T>::inorder(std::stringstream &aux) const {
     if (root != nullptr) {
         root->inorder(aux);
     }
+}
+
+template <class T>
+void BST<T>::inorderToList(vector<T>& result, TreeNode<T>* current) const {
+    if (current != nullptr) {
+        inorderToList(result, current->left);  // Recorre el subárbol izquierdo
+
+        // Agrega el valor del nodo actual al vector
+        result.push_back(current->value);
+
+        inorderToList(result, current->right);  // Recorre el subárbol derecho
+    }
+}
+
+template <class T>
+void BST<T>::inorderToList(vector<T>& result) const {
+    inorderToList(result, root);
 }
 
 #endif // BST_H_

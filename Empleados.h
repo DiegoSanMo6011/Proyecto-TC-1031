@@ -41,6 +41,11 @@ class Empleados{
         //metodos
         virtual string to_string() = 0;
         virtual int get_num_ventas() const = 0;
+        string getNombre() const;
+        string getLocal() const;
+
+
+        void setNumVentas(int ventas);
         //sobrecarga de operadores
         bool operator<(const Empleados& other) const {
             return this->get_num_ventas() < other.get_num_ventas();
@@ -67,6 +72,20 @@ Empleados::Empleados (string nom, string loc){
     local = loc;
 }
 
+//get Nombre
+string Empleados::getNombre() const {
+    return nombre;
+}
 
+//get Local
+string Empleados::getLocal() const {
+    return local;
+}
+
+
+//Set numero de ventas
+void Empleados::setNumVentas(int ventas) {
+    num_ventas = ventas;
+}
 
 #endif //Empleados.h

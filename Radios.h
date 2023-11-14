@@ -57,11 +57,10 @@ Radios::Radios (string nom, string loc, int vent):Empleados(nom,loc){
  * @param
  * @return string con los datos de Empleados del local televisiones
 */
-string Radios::to_string(){
-
-    stringstream aux;
-    aux << "\nNombre: " << nombre << "\nLocal: " << local << "\nVentas: " << num_ventas << "\n" ;
-    return aux.str();
+string Radios::to_string() {
+    stringstream ss;
+    ss << nombre << ',' << local << ',' << num_ventas << endl;
+    return ss.str();
 }
 
 //get ventas

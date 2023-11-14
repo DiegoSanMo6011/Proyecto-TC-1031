@@ -1,21 +1,7 @@
-/*
- *
- * Proyecto "Gestión de Vendedores y Ventas" calse Empresa
- * 
- * Diego Gerardo Sanchez Moreno
- * 
- * A01276011
- * 
- * 19/09/2023
- * 
- * Main que funciona como menu para escoger que funcion del codigo se desea utilizar
- * y demostrar el correcto funcionamiento del mismo.
- */
-
- //librerias 
 #include <iostream>
+#include <fstream>
 #include <string>
-#include <limits> // Para limpiar el búfer de entrada
+#include <limits>
 #include <iomanip>
 
 #include "Empresa.h"
@@ -52,6 +38,9 @@ int main() {
     int temp_ventas;
 
     Empresa empresa;
+    // Cargar empleados desde el archivo CSV
+    empresa.cargarDesdeCSV("empleados.csv");
+
 
     while (true) {
         // Limpia la pantalla de la terminal
@@ -66,26 +55,31 @@ int main() {
         // Imprime las opciones
         // Imprime las opciones de manera más estilizada
         cout << "Opciones:" << std::endl;
-        cout << "\033[1;36m1. Crear ejemplos y mostrar vendedores (prueba)\033[0m" << endl;
-        cout << "\033[1;36m2. Mostrar vendedores\033[0m" << endl;
-        cout << "\033[1;36m3. Agregar un vendedor de radios\033[0m" << endl;
-        cout << "\033[1;36m4. Agregar un vendedor de televisiones\033[0m" << endl;
+        cout << "\033[1;36m1. Actualiza CSV\033[0m" << endl;
+        cout << "\033[1;36m2. Agregar un vendedor de radios\033[0m" << endl;
+        cout << "\033[1;36m3. Agregar un vendedor de televisiones\033[0m" << endl;
+        cout << "\033[1;36m4. Modificar las Ventas de un Empleado\033[0m" << endl;
         cout << "\033[1;31m0. Salir\033[0m" << endl;
-            imprimirLineaDecorativa(50);
+        imprimirLineaDecorativa(50);
 
         cout << "Seleccione una opcion: " << endl;
         cin >> opcion;
 
         switch (opcion) {
             case 1:
-                empresa.crea_ejemplos();
-                empresa.muestra_vendedores();
-                break;
-            case 2:
-                empresa.muestra_vendedores();
+                if (empresa.hayEmpleadosAgregados()) {
+                    empresa.guardarEnCSV("empleados.csv");
+                    return 0;
+                } else {
+                    cout << "No se han agregado empleados. Agregue empleados antes de cargarlos." << endl;
+                    // Pausa antes de continuar
+                    cout << "Presione Enter para continuar...";
+                    limpiarBuffer();
+                    cin.get();
+                }
                 break;
 
-            case 3:
+            case 2:
                 cout << "Escribe el nombre del empleado: ";
                 limpiarBuffer();
                 cin.getline(temp_nombre, sizeof(temp_nombre));
@@ -96,7 +90,7 @@ int main() {
                 empresa.agrega_radios(temp_nombre, temp_local, temp_ventas);
                 mostrarConfirmacion();
                 break;
-            case 4:
+            case 3:
                 cout << "Escribe el nombre del empleado: ";
                 limpiarBuffer();
                 cin.getline(temp_nombre, sizeof(temp_nombre));
@@ -107,7 +101,20 @@ int main() {
                 empresa.agrega_teles(temp_nombre, temp_local, temp_ventas);
                 mostrarConfirmacion();
                 break;
+
+            case 4:
+                cout << "Escribe el nombre del empleado: ";
+                limpiarBuffer();
+                cin.getline(temp_nombre, sizeof(temp_nombre));
+                cout << "Dime el numero de ventas que hizo este empleado: ";
+                cin >> temp_ventas;
+                empresa.modificarVentasEmpleado(temp_nombre,temp_ventas);
+                empresa.mergeSortEmpleados();
+                mostrarConfirmacion();
+                break;
+
             case 0:
+                // Cierra el archivo de salida
                 cout << "Saliendo del programa. Hasta luego :D" << endl;
                 return 0;
             default:
