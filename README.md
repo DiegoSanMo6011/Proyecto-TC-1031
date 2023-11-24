@@ -36,19 +36,19 @@ En este tercer avance, se han implementado nuevas funcionalidades y mejoras en e
 ## Instrucciones para compilar el avance de proyecto
 Ejecuta el siguiente comando en la terminal:
 
-```bash
+
 g++ main.cpp Empleados.h Empresa.h Radios.h Televisiones.h bst.h Sort.h -o tercer_avance
 
 ## Instrucciones para ejecutar el avance de proyecto
 Ejecuta el siguiente comando en la terminal:
 
-```bash
+
 ./tercer_avance
 
 ## Descripción de las entradas del avance de proyecto
 Para la carga inicial desde un archivo CSV, el formato del archivo debe ser:
 
-```csv
+
 Nombre,Local,Ventas
 Arturo,Tienda de Televisiones,32
 Cristiano Ronaldo,Tienda de Televisiones,10
