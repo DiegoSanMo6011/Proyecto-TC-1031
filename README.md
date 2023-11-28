@@ -160,10 +160,15 @@ La implementación de mecanismos de escritura de archivos se realiza de manera c
 # Evidencia problemas de programación
 
 Enlace video algoritmos de ordenamiento: https://youtu.be/c9KFukY6Lfc
+
 Solución: https://leetcode.com/problems/top-k-frequent-elements/solutions/4329408/solucion-con-quick-sort/
+
 Enlace video estructura de datos lineal: https://youtu.be/NxXXA7xpS0g
+
 Solución: https://leetcode.com/problems/design-circular-queue/solutions/4329413/soluci-n-usando-lista-ligada/
+
 Enlace video estructura de datos no lineal: https://youtu.be/P7qSR1fYFq4
+
 Solución: https://leetcode.com/problems/kth-largest-element-in-an-array/solutions/4329416/soluci-n-heap/
 
 ## Enlace cuenta de leetcode: https://leetcode.com/DiegoGerardo/
